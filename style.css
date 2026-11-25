@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.850);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    height: 700px;
+    width: 700px;
+    border-radius: 50px;
+    background-color: rgb(87, 87, 87);
+}
+
+
+.pesquisaInput {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.campo-busca {
+    position: relative;
+}
+
+.pesquisaInput input {
+    height: 40px;
+    width: 250px;
+    border-radius: 5px;
+    border: 5px solid rgb(255, 255, 255);
+}
+
+.botao {
+    height: 40px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+}
+
+
+#sugestoes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    list-style: none;
+    z-index: 10;
+}
+
+#sugestoes li {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background: white;
+    cursor: pointer;
+}
+
+#sugestoes li:hover {
+    background: #eee;
+}
+
+#resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.775);
+}
+
+#resultado h2 {
+    font-size: 50px;
+}
+
+.pokemonIMG {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.erro {
+    color: red;
+}
