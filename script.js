@@ -97,7 +97,7 @@ function mostrarPokemon(dados, tipos, fraquezas) {
 
     resultado.innerHTML = `
         <div class="cabecalho">
-            <h1 class="pokemon">${dados.name}</h1>
+            <h2 class="pokemon">${dados.name}</h2>
             <span class="pokemonID">N°0${numero}</span>
         </div>
         <img class="pokemonIMG" src="${dados.sprites.other["official-artwork"].front_default}" alt="${dados.name}">
