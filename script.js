@@ -2,13 +2,17 @@ const form = document.getElementById("form")
 const inputNome = document.getElementById("nomePokemon")
 const listaSugestoes = document.getElementById("sugestoes")
 const resultado = document.getElementById("resultado")
+const botaoShiny= document.getElementById("botaoShiny")
+const pokemonIMG = document.getElementById("pokemonIMG")
 
-let pokemon = []
+
 
 function pegarIdUrl(url) {
     const partes = url.split("/")
     return partes[partes.length - 2]
 }
+
+let pokemon = []
 
 async function carregarNomes() {
     try {
@@ -70,7 +74,7 @@ async function buscarPokemon(nome) {
     if (!resposta.ok) {
         throw new Error("Pokémon não encontrado")
     }
-
+    console.log(resposta)
     return await resposta.json()
 }
 
@@ -98,9 +102,10 @@ function mostrarPokemon(dados, tipos, fraquezas) {
     resultado.innerHTML = `
         <div class="cabecalho">
             <h2 class="pokemon">${dados.name}</h2>
-            <span class="pokemonID">N°0${numero}</span>
+            <span class="pokemonID">N°${numero.padStart(4, "0")}</span>
+            <button id="botaoShiny" class="shiny" type="button"> <span id="star">☆</span>Shiny</button>
         </div>
-        <img class="pokemonIMG" src="${dados.sprites.other["official-artwork"].front_default}" alt="${dados.name}">
+        <img id="pokemonIMG" class="pokemonIMG" src="${dados.sprites.other["official-artwork"].front_default}" alt="${dados.name}">
         <div class="infoTipos">
             <h3>Tipo</h3>
             <div class="linhaTipos">${tiposHTML}</div>
@@ -108,7 +113,41 @@ function mostrarPokemon(dados, tipos, fraquezas) {
             <div class="linhaTipos">${fraquezasHTML}</div>
         </div>
     `
+    Shiny(dados)
 }
+
+
+function Shiny(dados){
+
+    const botaoShiny= document.getElementById("botaoShiny")
+    const pokemonIMG = document.getElementById("pokemonIMG")
+    const star = document.getElementById("star")
+    
+    const imagemNormal = dados.sprites.other["official-artwork"].front_default
+    const imagemShiny = dados.sprites.other["official-artwork"].front_shiny
+
+    let shinyIMG = false;
+
+    if(imagemShiny === null){
+        botaoShiny.disabled = true
+        return
+    }
+
+    botaoShiny.addEventListener("click", function(){
+        if (shinyIMG) {
+            pokemonIMG.src = imagemNormal
+            star.innerHTML = "☆"
+            shinyIMG = false;
+        }
+        else{
+            pokemonIMG.src = imagemShiny
+            star.innerHTML = "★"
+            shinyIMG = true
+        }
+
+    })
+}
+    
 
 function mostrarErro(mensagem) {
     resultado.innerHTML = `<p class="erro">${mensagem}</p>`

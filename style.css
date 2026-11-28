@@ -12,7 +12,7 @@ body {
     height: 100vh;
 }
 .titulo{
-    padding-bottom: 20px;
+    padding-bottom: 25px;
     font-size: 50px;
 }
 .container {
@@ -106,8 +106,9 @@ body {
 
 .cabecalho {
     display: flex;
-    align-items: baseline;
-    gap: 12px;
+    align-items: center;
+    gap: 15px;
+    padding: 2px;
 }
 
 .pokemon {
@@ -145,4 +146,21 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 14px;
+}
+
+.shiny {
+    height: 30px;
+    padding: 0 8px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    background-color: rgb(255, 255, 36);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.shiny:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
